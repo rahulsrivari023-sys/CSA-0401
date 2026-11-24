@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(void){int n,f,ref[100],frame[20],next=0,fault=0;printf("Reference count and frame count: ");scanf("%d%d",&n,&f);if(n>100||f>20||n<1||f<1)return 1;for(int i=0;i<f;i++)frame[i]=-1;printf("Reference string: ");for(int i=0;i<n;i++)scanf("%d",&ref[i]);for(int i=0;i<n;i++){int hit=0;for(int j=0;j<f;j++)if(frame[j]==ref[i])hit=1;if(!hit){frame[next]=ref[i];next=(next+1)%f;fault++;}printf("%d: ",ref[i]);for(int j=0;j<f;j++)if(frame[j]<0)printf("- ");else printf("%d ",frame[j]);puts(hit?"Hit":"Fault");}printf("Page faults = %d\n",fault);return 0;}

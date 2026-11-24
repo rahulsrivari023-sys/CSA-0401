@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(void){int n,len,index[100],used[200]={0},b;printf("Total disk blocks (max 200): ");scanf("%d",&n);printf("Number of file blocks: ");scanf("%d",&len);if(n>200||len>100||len<1||n<1)return 1;printf("Enter %d data block numbers: ",len);for(int i=0;i<len;i++){scanf("%d",&b);if(b<0||b>=n||used[b]){puts("Invalid or duplicate block");return 1;}used[b]=1;index[i]=b;}puts("Index block entries:");for(int i=0;i<len;i++)printf("File block %d -> Disk block %d\n",i,index[i]);return 0;}

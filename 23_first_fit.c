@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(void){int nb,np,b[50],p[50],a[50];printf("Blocks and processes: ");scanf("%d%d",&nb,&np);if(nb>50||np>50||nb<1||np<1)return 1;for(int i=0;i<nb;i++){printf("Block %d: ",i+1);scanf("%d",&b[i]);}for(int i=0;i<np;i++){printf("Process %d: ",i+1);scanf("%d",&p[i]);a[i]=-1;for(int j=0;j<nb;j++)if(b[j]>=p[i]){a[i]=j;b[j]-=p[i];break;}}printf("Process\tSize\tBlock\n");for(int i=0;i<np;i++)if(a[i]>=0)printf("P%d\t%d\t%d\n",i+1,p[i],a[i]+1);else printf("P%d\t%d\tNot allocated\n",i+1,p[i]);return 0;}

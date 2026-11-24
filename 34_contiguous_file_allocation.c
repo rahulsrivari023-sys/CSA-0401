@@ -1,0 +1,2 @@
+#include <stdio.h>
+int main(void){int n,start,len,used[200]={0};printf("Total disk blocks (max 200): ");scanf("%d",&n);if(n<1||n>200)return 1;printf("Starting block and file length: ");scanf("%d%d",&start,&len);if(start<0||len<1||start+len>n){puts("Invalid range");return 1;}for(int i=start;i<start+len;i++)if(used[i]){puts("Allocation failed");return 0;}for(int i=start;i<start+len;i++)used[i]=1;puts("Allocated blocks:");for(int i=start;i<start+len;i++)printf("%d ",i);puts("");return 0;}
